@@ -3,15 +3,15 @@ import styles from './PokemonWebPart.module.scss';
 import type { IPokemonWebPartProps } from './IPokemonWebPartProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-export default class PokemonWebPart extends React.Component<IPokemonWebPartProps, {}> {
-  public render(): React.ReactElement<IPokemonWebPartProps> {
+
+const PokemonWebPart : React.FC<IPokemonWebPartProps> = (props) => {
     const {
       description,
       isDarkTheme,
       environmentMessage,
       hasTeamsContext,
-      userDisplayName
-    } = this.props;
+      userDisplayName,
+    } = props
 
     return (
       <section className={`${styles.pokemonWebPart} ${hasTeamsContext ? styles.teams : ''}`}>
@@ -39,5 +39,7 @@ export default class PokemonWebPart extends React.Component<IPokemonWebPartProps
         </div>
       </section>
     );
-  }
+  
 }
+
+export default PokemonWebPart
