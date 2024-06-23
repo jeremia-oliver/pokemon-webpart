@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "20.11.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.12.0"
+    },
+    "version": "1.19.0",
+    "libraryName": "pokemon-webpart",
+    "libraryId": "a2ed21f6-6477-4518-981f-9676c519e87a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "pokemon-webpart",
+    "solutionShortDescription": "pokemon-webpart description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "pokemon-web-part-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pokemonWebPart/PokemonWebPartWebPart.js",
+          "manifest": "./src/webparts/pokemonWebPart/PokemonWebPartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PokemonWebPartWebPartStrings": "lib/webparts/pokemonWebPart/loc/{locale}.js"
+  }
+}

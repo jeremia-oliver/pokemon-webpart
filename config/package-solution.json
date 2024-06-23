@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "pokemon-webpart-client-side-solution",
+    "id": "a2ed21f6-6477-4518-981f-9676c519e87a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.19.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "pokemon-webpart description"
+      },
+      "longDescription": {
+        "default": "pokemon-webpart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "pokemon-webpart Feature",
+        "description": "The feature that activates elements of the pokemon-webpart solution.",
+        "id": "c8f0a509-6d4b-4a4f-9aaa-d85a9df7e93c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/pokemon-webpart.sppkg"
+  }
+}
