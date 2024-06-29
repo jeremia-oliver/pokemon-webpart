@@ -7,7 +7,6 @@ import { getSP } from "../pnpjsConfig";
 
 class PokemonStore{
     isLoading: boolean = false;
-    PokemonResults:any[];
     ListPokemon:PokemonResultType[] = [];
     ListTypes:IDropdownOption[] = [];
     ListCategories:IDropdownOption[] = [];
@@ -23,7 +22,7 @@ class PokemonStore{
         runInAction(() => { this.isLoading = true; })
         const LIST_NAME = "Pokemon";
         const _sp:SPFI = getSP(context);
-        const items:any[] = await _sp.web.lists.getByTitle(LIST_NAME).items.top(10)();
+        const items:any[] = await _sp.web.lists.getByTitle(LIST_NAME).items.top(1025)();
         items?.forEach((e) => {
             runInAction(() => {
                 this.ListPokemon.push({
@@ -31,10 +30,7 @@ class PokemonStore{
                     PokemonType:e.PokemonType,
                     Category:e.Category,
                     PokedexNumber:e.PokedexNumber,
-                    Image:{
-                        Description:e.PokemonName,
-                        Url:e.Url,
-                    },
+                    Image:e.Image,
                     Display:true
                 });
                 if(this.ListTypes.findIndex(i => i.key === e.PokemonType) === -1){
@@ -60,8 +56,9 @@ class PokemonStore{
         })
     }
 
-    searchPokemon = (search:string, type:string, category:string) => {
+    searchPokemon = (search:string, type:string, category:string):void => {
         runInAction(() => { 
+            this.isLoading = true;
             this.ListPokemon = this.ListPokemon.map(obj => {
                 const newObj = Object.assign({}, obj);
                 newObj.Display = (obj.PokemonName).toLowerCase().includes(search.toLowerCase(), 0);
@@ -73,15 +70,16 @@ class PokemonStore{
                 }
                 return newObj;
             });
-            console.log(search)
             this.SearchValue = search; 
             this.TypeValue = type; 
             this.CategoryValue = category; 
+            this.isLoading = false; 
         })
     }
 
-    filterPokemon = (type:string, category:string) => {
+    filterPokemon = (type:string, category:string):void => {
         runInAction(() => { 
+            this.isLoading = true;
             this.ListPokemon = this.ListPokemon.map(obj => {
                 const newObj = Object.assign({}, obj);
                 newObj.Display = (obj.PokemonName).toLowerCase().includes(this.SearchValue.toLowerCase(), 0);
@@ -95,6 +93,7 @@ class PokemonStore{
             });
             this.TypeValue = type; 
             this.CategoryValue = category; 
+            this.isLoading = false; 
         })
     }
 }
