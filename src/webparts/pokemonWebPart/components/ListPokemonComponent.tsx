@@ -5,6 +5,7 @@ import { pokemonStore } from '../stores/PokemonStore';
 import { makeStyles, getTheme, Modal  } from '@fluentui/react';
 import { Spinner } from '@fluentui/react/lib/Spinner';
 import { NeutralColors } from '@fluentui/theme';
+import { Pagination } from "@pnp/spfx-controls-react/lib/pagination";
 
 
 const theme = getTheme();
@@ -93,11 +94,15 @@ const useClasses = makeStyles({
     
   })
 
-
   function ListPokemonComponent() {
     const [calloutId, setCalloutId] = useState(0);
     const classes = useClasses();
-    const {isLoading, ListPokemon} = pokemonStore
+    const {SearchValue,TypeValue, CategoryValue, isLoading, ListPokemon, TotalPages, CurrentPage, fetchPokemonbyPage} = pokemonStore
+  
+    const _getPage = async(page: number):Promise<void> => {
+      fetchPokemonbyPage(SearchValue,TypeValue, CategoryValue, page)
+    }
+
     if(isLoading) return (
         <div style={LoadingStyles}>
             <Spinner label="Loading Pokemon..." />
@@ -173,8 +178,14 @@ const useClasses = makeStyles({
             </div>
             </Modal>
             )
-        }       
+        }
+        <Pagination
+          currentPage={CurrentPage}
+          totalPages={TotalPages} 
+          onChange={(page) => _getPage(page)}
+          limiter={3} 
+        />
         </>
     )
-}
+} 
 export default observer(ListPokemonComponent)
